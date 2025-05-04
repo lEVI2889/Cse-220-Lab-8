@@ -1,18 +1,18 @@
 //Task 1
 public class MinHeap {
-    private static int elem_num;
-    private static int[] heap;
+    private int elem_num;
+    private int[] heap;
     public MinHeap(int capacity) {
         this.elem_num = 1;
         this.heap = new int[capacity+1];
     }
-    public static int parent(int i) {
+    public int parent(int i) {
         return (i/2);
     }
-    public static int left(int i) {
+    public int left(int i) {
         return (2*i);
     }
-    public static int right(int i) {
+    public int right(int i) {
         return (2*i + 1);
     }
     void Sort(){
@@ -24,7 +24,7 @@ public class MinHeap {
         }
         elem_num = temp;
     }
-    static void Insert(int n){
+    void Insert(int n){
         if(elem_num == heap.length){
             System.out.println("Heap is full");
             return;
@@ -35,18 +35,18 @@ public class MinHeap {
             elem_num++;
         }
     }
-    static void Swim(int idx){
+    void Swim(int idx){
         if(idx>1 && heap[parent(idx)]>heap[idx]){
             swap(parent(idx), idx);
             Swim(parent(idx));
         }
     }
-    static void Sink(int idx){
+    void Sink(int idx){
         int temp = idx;
-        if(left(idx)< elem_num && heap[idx]>heap[left(idx)]){
+        if(left(idx)< elem_num && heap[temp]>heap[left(idx)]){
             temp = left(idx);
         }
-        if(right(idx)< elem_num && heap[idx]>heap[right(idx)]){
+        if(right(idx)< elem_num && heap[temp]>heap[right(idx)]){
             temp = right(idx);
         }
         if(temp != idx){
@@ -54,7 +54,7 @@ public class MinHeap {
             Sink(temp);
         }
     }
-    static int ExtractMin(){
+    int ExtractMin(){
         if(elem_num <= 1){
             System.out.println("Heap is empty");
             return -1;
@@ -65,7 +65,7 @@ public class MinHeap {
         Sink(1);
         return min;
     }
-    static void swap(int i, int j){
+    void swap(int i, int j){
         int temp = heap[i];
         heap[i] = heap[j];
         heap[j] = temp;

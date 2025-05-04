@@ -5,9 +5,11 @@ public class Task3 {
         for (int i = 0; i < output.length; i++) {
             output[i] = heap.ExtractMin();
         }
+        System.out.print("[ ");
         for (int i = 0; i < output.length; i++) {
             System.out.print(output[i] + " ");
         }
+        System.out.print("]");
     }
     static void heapZeroer(MinHeap heap, int m){
         for (int i = 0; i < m; i++) {
